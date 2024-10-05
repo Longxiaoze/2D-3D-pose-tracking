@@ -17,6 +17,7 @@
 #include <opencv2/core/eigen.hpp>
 #include "opencv2/core/utility.hpp"
 #include <cv_bridge/cv_bridge.h>
+
 using namespace std;
 using namespace Eigen;
 using namespace cv;
@@ -42,7 +43,7 @@ void on_mouse(int event, int x, int y, int flags, void *ustc) //event鼠标事�
     Point pt; //坐标点;
     char coordinateName[16];
 
-    if (event == CV_EVENT_LBUTTONDOWN) //左键按下，读取坐标，并在图像上该点处划圆
+    if (event == EVENT_LBUTTONDOWN) //左键按下，读取坐标，并在图像上该点处划圆
     {
         pt = Point2d(x, y);
         capturePoint.push_back(pt);
@@ -56,7 +57,7 @@ void on_mouse(int event, int x, int y, int flags, void *ustc) //event鼠标事�
         if (n >= 6)
         {
             imshow("org", org);
-            cvDestroyAllWindows();
+            destroyAllWindows();  // Updated to OpenCV4 style
         }
     }
 }
@@ -251,7 +252,7 @@ int main(int argc, char **argv)
             cv::Mat cv_rotation;
             cv::Mat cv_translation;
 
-            cv::solvePnP(model_points, capturePoint, camera_matrix, dist_coeffs, cv_rotation, cv_translation,false, CV_EPNP);
+            cv::solvePnP(model_points, capturePoint, camera_matrix, dist_coeffs, cv_rotation, cv_translation,false, cv::SOLVEPNP_EPNP);
             cv::Mat cv_rot_mat;
             Rodrigues(cv_rotation, cv_rot_mat);
             Eigen::Vector3d trans;

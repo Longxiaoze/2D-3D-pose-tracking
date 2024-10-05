@@ -1,6 +1,46 @@
 # 2D-3D pose tracking
 ## Monocular Camera Localization in Prior LiDAR Maps with 2D-3D Line Correspondences
 
+**update to ubuntu20 + cuda11.8 + ros noetic + anaconda pytorch2.4**
+
+## Install
+``` bash
+conda activate afm
+mkdir -p plp_ws/src
+cd plp_ws/src/
+git clone https://github.com/Longxiaoze/VINS-Mono.git
+git clone https://github.com/Longxiaoze/2D-3D-pose-tracking.git
+cd 2D-3D-pose-tracking/afm/scripts/lib/
+make
+cd ../../../../../
+cp ~/plp_ws/src/2D-3D-pose-tracking/VINS-Mono-config/vins_rviz_config.rviz ~/plp_ws/src/VINS-Mono/config/
+catkin_make
+```
+
+## run
+``` bash
+conda activate afm
+source ~/plp_ws/devel/setup.bash
+roslaunch vins_estimator euroc.launch 
+```
+
+``` bash
+conda activate afm
+source ~/plp_ws/devel/setup.bash
+roslaunch map_fusion euroc_tracking.launch
+```
+
+``` bash
+conda activate afm
+source ~/plp_ws/devel/setup.bash
+roslaunch vins_estimator vins_rviz.launch
+```
+
+``` bash
+conda activate afm
+source ~/plp_ws/devel/setup.bash
+rosbag play /media/ubuntu20-jrl/DATA/datasets/euroc/V1_02_medium.bag
+```
 
 The video demos can be seen: [Corridors](https://youtu.be/H80Bnxm8IPE) [EuRoC](https://youtu.be/mHaDKoIHNwI)
 

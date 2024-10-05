@@ -1,9 +1,6 @@
 #include <ATen/ATen.h>
 #include <ATen/cuda/CUDAContext.h>
 
-#include <THC/THC.h>
-#include <THC/THCDeviceUtils.cuh>
-
 #include <vector>
 #include <iostream>
 
@@ -96,8 +93,8 @@ std::tuple<at::Tensor,at::Tensor> afm_cuda(
 
     cudaStream_t stream = at::cuda::getCurrentCUDAStream();
     
-    float* afmap_data = afmap.data<float>();
-    int* aflabel_data = aflabel.data<int>();
+    float* afmap_data = afmap.data_ptr<float>();
+    int* aflabel_data = aflabel.data_ptr<int>();
 
     // printf("%.8f\n", log(1e-6));
     afm_kernel<<<CUDA_GET_BLOCKS(nthreads), CUDA_NUM_THREADS >>>(
@@ -115,6 +112,6 @@ std::tuple<at::Tensor,at::Tensor> afm_cuda(
     
     // THCudaFree(state, aflabel_dev);
     // THCudaFree(state, afmap_dev);
-    THCudaCheck(cudaGetLastError());
+    AT_CUDA_CHECK(cudaGetLastError());
     return std::make_tuple(afmap, aflabel);
 }

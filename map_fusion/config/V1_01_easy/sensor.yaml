@@ -2,7 +2,7 @@
 
 
 image_topic: "/cam0/image_raw"
-output_path: "/home/huai/output/"
+output_path: "/home/ubuntu20-jrl/datasets/2d_3d_pose_tracking_results/"
 #camera calibration 
 model_type: PINHOLE
 camera_name: camera
