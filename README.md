@@ -4,13 +4,32 @@
 **update to ubuntu20 + cuda11.8 + ros noetic + anaconda pytorch2.4**
 
 ## Install
+
+### ros noetic Ubuntu20 and Noetic
+``` bash
+wget http://fishros.com/install -O fishros && . fishros
+```
+
+### conda-env
+``` bash
+conda create -n plp_dl python=3.9
+conda activate plp_dl
+conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0  pytorch-cuda=11.8 -c pytorch -c nvidia
+# test with python and output need to be True
+python -c "import torch; print(torch.cuda.is_available())"
+```
+
+### workspace
 ``` bash
 conda activate afm
 mkdir -p plp_ws/src
 cd plp_ws/src/
 git clone https://github.com/Longxiaoze/VINS-Mono.git
 git clone https://github.com/Longxiaoze/2D-3D-pose-tracking.git
-cd 2D-3D-pose-tracking/afm/scripts/lib/
+cd 2D-3D-pose-tracking/afm/scripts/
+pip install -r requirements.txt
+pip install empy==3.3.2 catkin_pkg 
+cd lib/
 make
 cd ../../../../../
 cp ~/plp_ws/src/2D-3D-pose-tracking/VINS-Mono-config/vins_rviz_config.rviz ~/plp_ws/src/VINS-Mono/config/
@@ -19,28 +38,31 @@ catkin_make
 
 ## run
 ``` bash
-conda activate afm
+conda activate plp_dl
 source ~/plp_ws/devel/setup.bash
 roslaunch vins_estimator euroc.launch 
 ```
 
 ``` bash
-conda activate afm
+conda activate plp_dl
 source ~/plp_ws/devel/setup.bash
 roslaunch map_fusion euroc_tracking.launch
 ```
 
 ``` bash
-conda activate afm
+conda activate plp_dl
 source ~/plp_ws/devel/setup.bash
 roslaunch vins_estimator vins_rviz.launch
 ```
 
 ``` bash
-conda activate afm
+conda activate plp_dl
 source ~/plp_ws/devel/setup.bash
 rosbag play /media/ubuntu20-jrl/DATA/datasets/euroc/V1_02_medium.bag
 ```
+
+![2d-3d-pose-tracking-video](https://github.com/Longxiaoze/VINS-Mono/blob/master/support_files/image/2d-3d-pose-tracking-video.gif)
+
 
 The video demos can be seen: [Corridors](https://youtu.be/H80Bnxm8IPE) [EuRoC](https://youtu.be/mHaDKoIHNwI)
 
