@@ -38,11 +38,16 @@ catkin_make
 ```
 
 ## run
+Change the output frequency of VINS-Mono `VINS-Mono\config\euroc\euroc_config.yaml` to 15 Hz `freq: 15`. 
 ``` bash
 conda activate plp_dl
 source ~/plp_ws/devel/setup.bash
 roslaunch vins_estimator euroc.launch 
 ```
+
+change first line in file ~/plp_ws/src/2D-3D-pose-tracking/afm/scripts/ros_test.py
+
+to #!path_to_anaconda3/envs/plp_dl(env_path)/bin/python
 
 ``` bash
 conda activate plp_dl
