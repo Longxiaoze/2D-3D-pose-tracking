@@ -31,6 +31,7 @@ pip install -r requirements.txt
 pip install empy==3.3.2 catkin_pkg 
 cd lib/
 make
+conda develop . ./lib
 cd ../../../../../
 cp ~/plp_ws/src/2D-3D-pose-tracking/VINS-Mono-config/vins_rviz_config.rviz ~/plp_ws/src/VINS-Mono/config/
 catkin_make
