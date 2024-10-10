@@ -1,7 +1,13 @@
 # 2D-3D pose tracking
 ## Monocular Camera Localization in Prior LiDAR Maps with 2D-3D Line Correspondences
 
-**update to ubuntu20 + cuda11.8 + ros noetic + anaconda pytorch2.4**
+**This repo is an update 2D-3D pose tracking version to ubuntu20 + cuda11.8 + ros noetic + anaconda pytorch2.4**
+
+From orginal repo [2D-3D pose tracking](https://github.com/Zumbalamambo/2D-3D-pose-tracking)
+
+An upload 2D line detection version is [afm_cvpr2019 ](https://github.com/Longxiaoze/afm_cvpr2019)
+
+An update 3D line detection version is [3D line detection](https://github.com/Longxiaoze/3DLineDetection)
 
 ## Install
 
@@ -95,6 +101,8 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html)
 
 ## 2. Build AFM line detection
 The afm 2D line detection package is modified by the original [afm_cvpr2019](https://github.com/cherubicXN/afm_cvpr2019). Independent conda testing is strongly recommend. 
+
+An upload version is [afm_cvpr2019 2d line detection](https://github.com/Longxiaoze/afm_cvpr2019)
 ```
     cd catkin_ws/src/afm/scripts
     pip install -r requirements.txt
@@ -107,6 +115,8 @@ The afm 2D line detection package is modified by the original [afm_cvpr2019](htt
 ```
 ## 3. 3D line detection
 We follow [3D line detection](https://github.com/xiaohulugo/3DLineDetection) to detect geometric 3D lines and the results are included.
+
+An update version is [3D line detection](https://github.com/Longxiaoze/3DLineDetection)
 
 ## 4. Build VINS-Mono on ROS
 Clone the repository and catkin_make:
