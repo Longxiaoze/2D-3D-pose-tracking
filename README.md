@@ -28,8 +28,8 @@ python -c "import torch; print(torch.cuda.is_available())"
 ### workspace
 ``` bash
 conda activate plp_dl
-mkdir -p plp_ws/src
-cd plp_ws/src/
+mkdir -p ~/plp_ws/src
+cd ~/plp_ws/src/
 git clone https://github.com/Longxiaoze/VINS-Mono.git
 git clone https://github.com/Longxiaoze/2D-3D-pose-tracking.git
 cd 2D-3D-pose-tracking/afm/scripts/
