@@ -34,7 +34,7 @@ git clone https://github.com/Longxiaoze/VINS-Mono.git
 git clone https://github.com/Longxiaoze/2D-3D-pose-tracking.git
 cd 2D-3D-pose-tracking/afm/scripts/
 pip install -r requirements.txt
-pip install empy==3.3.2 catkin_pkg 
+pip install empy==3.3.2 catkin_pkg rospkg
 cd lib/
 make
 conda develop . ./lib
