@@ -1,0 +1,18 @@
+MODEL:
+  ARCH: "unet"
+
+DATASETS:
+  TRAIN: ("wireframe",)
+  TEST: ("wireframe",)
+
+SOLVER:
+  BATCH_SIZE: 16
+  STEPS: (50,100,150)
+
+save_dir: "experiments/unet"
+
+TEST:
+  TRANSFORM: True
+  OUTPUT_MODE: "display"
+  DISPLAY:
+    THRESHOLD: 0.2
