@@ -61,12 +61,9 @@ if __name__ == '__main__':
 
     # 环境变量 & cfg
     os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu)
-    cfg.defrost()
-    cfg.SAVE_DIR = ""
-    cfg.freeze()
     cfg.merge_from_file(args.config_file)
-    if args.opts:
-        cfg.merge_from_list(args.opts)
+    # if args.opts:
+    #     cfg.merge_from_list(args.opts)
 
     # 初始化 AFM
     system = AFM(cfg)
