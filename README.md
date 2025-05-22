@@ -43,7 +43,8 @@ cp ~/plp_ws/src/2D-3D-pose-tracking/VINS-Mono-config/vins_rviz_config.rviz ~/plp
 catkin_make
 ```
 
-## run
+## run 
+### run 2d-3d-pose-tracking
 Change the output frequency of VINS-Mono `VINS-Mono\config\euroc\euroc_config.yaml` to 15 Hz `freq: 15`. 
 ``` bash
 conda activate plp_dl
@@ -75,7 +76,13 @@ rosbag play /media/ubuntu20-jrl/DATA/datasets/euroc/V1_02_medium.bag
 
 ![2d-3d-pose-tracking-video](https://github.com/Longxiaoze/VINS-Mono/blob/master/support_files/image/2d-3d-pose-tracking-video.gif)
 
+### run afm detection
+``` bash
+cd afm/scripts
+python detect_2d_line.py /path/to/image/ /path/to/save/   ./experiments/afm_unet.yaml
+```
 
+# origin readme
 The video demos can be seen: [Corridors](https://youtu.be/H80Bnxm8IPE) [EuRoC](https://youtu.be/mHaDKoIHNwI)
 
 <a href="https://youtu.be/H80Bnxm8IPE" target="_blank"><img src="./VINS-Mono-config/result_prev.jpg" 
